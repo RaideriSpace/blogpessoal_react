@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/cadastro";
+import Login from "./pages/login/Login";
 // import Home from "./pages/home/Home";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
 					<Routes>
 						{/* <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} /> */}
-						<Route path="/" element={<Cadastro />} />
+						<Route path="/cadastro" element={<Cadastro />} />
+						<Route path="/" element={<Login />} />
 					</Routes>
 				</div>
 				<Footer />
