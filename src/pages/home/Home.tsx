@@ -1,4 +1,20 @@
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+
 function Home() {
+    const navigate = useNavigate();
+
+    const { usuario, handleLogout } = useContext(AuthContext);
+    const token = usuario.token;
+  
+    useEffect(() => {
+      if (token === "") {
+        alert("Você precisa estar logado!");
+        navigate("/");
+      }
+    }, [token]);
+
 	return (
 		<>
 			<div className="bg-indigo-900 flex justify-center">
