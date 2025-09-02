@@ -6,7 +6,7 @@ function Navbar() {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const isLoginPage = useMemo(() => location.pathname == "/login", [location.pathname]);
+	const isLoginPage = useMemo(() => location.pathname == "/", [location.pathname]);
 	const isCadastroPage = useMemo(() => location.pathname == "/cadastro", [location.pathname]);
 
 	const { handleLogout } = useContext(AuthContext);
@@ -14,7 +14,7 @@ function Navbar() {
 	function logout() {
 		handleLogout();
 		alert("O Usuário foi desconectado com sucesso!");
-		navigate("/login");
+		navigate("/");
 	}
 
 	return (
@@ -36,7 +36,7 @@ function Navbar() {
 									</>
 								) : (
 									<>
-										<Link to={"/login"} className="hover:underline">
+										<Link to={"/"} className="hover:underline">
 											<span> Logar </span>
 										</Link>
 										<span className="font-bold"> Cadastrar </span>
@@ -45,8 +45,16 @@ function Navbar() {
 							</>
 						) : (
 							<div>
-								Postagens Temas Cadastrar tema Perfil &nbsp;
-								<Link to={"/login"} onClick={logout} className="hover:underline">
+								Postagens &nbsp;
+								<Link to={"/temas"} className="hover:underline">
+									Temas 
+								</Link>
+								&nbsp;
+								<Link to={"/cadastrartema"} className="hover:underline">
+									Cadastrar tema
+								</Link>
+								&nbsp; Perfil &nbsp;
+								<Link to={"/"} onClick={logout} className="hover:underline">
 									Sair
 								</Link>
 							</div>
