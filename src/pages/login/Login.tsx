@@ -60,8 +60,7 @@ function Login() {
 					</div>
 					<button
 						type="submit"
-						className="rounded bg-indigo-400 flex justify-center
-                                   hover:bg-indigo-900 text-white w-1/2 py-2">
+						className="rounded bg-indigo-400 flex justify-center hover:bg-indigo-900 text-white w-1/2 py-2">
 						{isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span>Entrar</span>}
 					</button>
 
@@ -74,9 +73,7 @@ function Login() {
 						</Link>
 					</p>
 				</form>
-				<div
-					className="bg-[url('https://i.imgur.com/ZZFAmzo.jpg')] lg:block hidden bg-no-repeat 
-                            w-full min-h-screen bg-cover bg-center"></div>
+				<div className="bg-[url('https://i.imgur.com/ZZFAmzo.jpg')] lg:block hidden bg-no-repeat w-full min-h-screen bg-cover bg-center"></div>
 			</div>
 		</>
 	);

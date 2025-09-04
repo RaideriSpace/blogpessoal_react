@@ -45,9 +45,12 @@ function Navbar() {
 							</>
 						) : (
 							<div>
-								Postagens &nbsp;
+								<Link to="/postagens" className="hover:underline">
+									Postagens
+								</Link>
+								&nbsp;
 								<Link to={"/temas"} className="hover:underline">
-									Temas 
+									Temas
 								</Link>
 								&nbsp;
 								<Link to={"/cadastrartema"} className="hover:underline">
