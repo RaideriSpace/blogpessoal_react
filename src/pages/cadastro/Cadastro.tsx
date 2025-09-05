@@ -4,6 +4,7 @@ import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
 	const navigate = useNavigate();
@@ -49,12 +50,12 @@ function Cadastro() {
 
 			try {
 				await cadastrarUsuario(`/usuarios/cadastro`, usuario, setUsuario);
-				alert("Usuário cadastrado com sucesso!");
+				ToastAlerta("Usuário cadastrado com sucesso!", "success");
 			} catch (error) {
-				alert("Erro ao cadastrar usuário!");
+        ToastAlerta("Erro ao cadastrar usuário!", "erro");
 			}
 		} else {
-			alert("Dados do usuáior inconsistentes! Verifique as informações do cadastro.");
+      ToastAlerta("Dados do usuário inconsistentes! Verifique as informações do cadastro.", "erro");
 			setUsuario({ ...usuario, senha: "" });
 			setConfirmarSenha("");
 		}
@@ -139,7 +140,6 @@ function Cadastro() {
 							className="rounded text-white bg-indigo-400 
                            hover:bg-indigo-900 w-1/2 py-2
                            flex justify-center">
-							{" "}
 							{isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span> Cadastrar </span>}
 						</button>
 					</div>

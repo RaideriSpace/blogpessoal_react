@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import ListaPostagens from "../../components/postagem/listapostagens/ListaPostagens";
 import ModalPostagem from "../../components/postagem/modalpostagem/ModalPostagem";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Home() {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Home() {
   
     useEffect(() => {
       if (token === "") {
-        alert("Você precisa estar logado!");
+        ToastAlerta("Você precisa estar logado!", "erro");
         navigate("/");
       }
     }, [token]);

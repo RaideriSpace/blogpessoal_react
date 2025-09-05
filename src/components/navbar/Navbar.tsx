@@ -1,6 +1,7 @@
 import { useContext, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Navbar() {
 	const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Navbar() {
 
 	function logout() {
 		handleLogout();
-		alert("O Usuário foi desconectado com sucesso!");
+		ToastAlerta("O Usuário foi desconectado com sucesso!", "info");
 		navigate("/");
 	}
 
@@ -22,42 +23,49 @@ function Navbar() {
 			<div
 				className="w-full flex justify-center py-4
             			   bg-indigo-900 text-white">
-				<div className="container flex justify-between text-lg">
-					<Link to={"/home"}>Blog Pessoal </Link>
-					<div className="flex gap-4">
+				<div className="container flex justify-between text-lg mx-8">
+					<Link to={"/home"} className="text-2xl font-bold">
+						Blog Pessoal{" "}
+					</Link>
+
+					<div>
 						{isLoginPage || isCadastroPage ? (
-							<>
+							<div className="flex gap-3">
 								{isLoginPage ? (
 									<>
 										<span className="font-bold"> Logar </span>
-										<Link to={"/cadastro"} className="hover:underline">
+										<Link to={"/cadastro"} className="hover:font-medium">
 											<span> Cadastrar </span>
 										</Link>
 									</>
 								) : (
 									<>
-										<Link to={"/"} className="hover:underline">
+										<Link to={"/"} className="hover:font-medium">
 											<span> Logar </span>
 										</Link>
 										<span className="font-bold"> Cadastrar </span>
 									</>
 								)}
-							</>
+							</div>
 						) : (
-							<div>
-								<Link to="/postagens" className="hover:underline">
+							<div className="flex gap-3">
+								<Link to="/postagens" className="hover:font-medium">
 									Postagens
 								</Link>
 								&nbsp;
-								<Link to={"/temas"} className="hover:underline">
+								<Link to={"/temas"} className="hover:font-medium">
 									Temas
 								</Link>
 								&nbsp;
-								<Link to={"/cadastrartema"} className="hover:underline">
+								<Link to={"/cadastrartema"} className="hover:font-medium">
 									Cadastrar tema
 								</Link>
-								&nbsp; Perfil &nbsp;
-								<Link to={"/"} onClick={logout} className="hover:underline">
+								&nbsp;
+								<Link to="/perfil" className="hover:font-medium">
+									Perfil
+								</Link>
+								&nbsp;
+								<Link to={"/"} onClick={logout} className="hover:font-medium">
 									Sair
 								</Link>
 							</div>

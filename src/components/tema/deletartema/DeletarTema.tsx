@@ -4,6 +4,7 @@ import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar, deletar } from "../../../services/Service";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarTema() {
 	const navigate = useNavigate();
@@ -28,7 +29,7 @@ function DeletarTema() {
 
 	useEffect(() => {
 		if (token === "") {
-			alert("Você precisa estar logado");
+			ToastAlerta("Você precisa estar logado!", "erro");
 			navigate("/");
 		}
 	}, [token]);
@@ -48,13 +49,12 @@ function DeletarTema() {
 					Authorization: token,
 				},
 			});
-
-			alert("Tema apagado com sucesso");
+			ToastAlerta("Tema apagado com sucesso.", "success");
 		} catch (error: any) {
 			if (error.toString().includes("401")) {
 				handleLogout();
 			} else {
-				alert("Erro ao deletar o tema.");
+				ToastAlerta("Erro ao deletar o tema.", "erro");
 			}
 		}
 
@@ -74,7 +74,10 @@ function DeletarTema() {
 				<header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl"> Tema </header>
 				<p className="p-8 text-3xl bg-slate-200 h-full"> {tema.descricao} </p>
 				<div className="flex">
-					<button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={retornar}> Não </button>
+					<button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={retornar}>
+						{" "}
+						Não{" "}
+					</button>
 					<button className="w-full text-slate-100 bg-indigo-400 hover:bg-indigo-600 flex items-center justify-center" onClick={deletarTema}>
 						{isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span> Sim </span>}{" "}
 					</button>
