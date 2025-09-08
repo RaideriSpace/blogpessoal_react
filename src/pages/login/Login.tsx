@@ -63,7 +63,7 @@ function Login() {
 						{isLoading ? <img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" width={35}></img> : <span>Entrar</span>}
 					</button>
 
-					<hr className="border-slate-800 w-full" />
+					<hr className="border-(--secondary-dark) w-full" />
 
 					<p className="text-white">
 						Ainda não tem uma conta?{" "}
