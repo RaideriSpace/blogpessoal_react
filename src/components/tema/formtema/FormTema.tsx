@@ -3,7 +3,7 @@ import type Tema from "../../../models/Tema";
 import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
-import { ClipLoader } from "react-spinners";
+
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormTema() {
