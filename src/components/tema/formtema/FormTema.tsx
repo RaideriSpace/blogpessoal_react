@@ -66,7 +66,7 @@ function FormTema() {
 				if (error.toString().includes("401")) {
 					handleLogout();
 				} else {
-          ToastAlerta("Erro ao atualizar o tema.", "erro");
+					ToastAlerta("Erro ao atualizar o tema.", "erro");
 				}
 			}
 		} else {
@@ -77,7 +77,7 @@ function FormTema() {
 				if (error.toString().includes("401")) {
 					handleLogout();
 				} else {
-          ToastAlerta("Erro ao cadastrar o tema.", "erro");
+					ToastAlerta("Erro ao cadastrar o tema.", "erro");
 				}
 			}
 		}
@@ -88,22 +88,28 @@ function FormTema() {
 
 	return (
 		<div className="container flex flex-col items-center justify-center mx-auto">
-			<h1 className="text-4xl text-center my-8">{id === undefined ? "Cadastrar Tema" : "Editar Tema"}</h1>
+			<h1 className="text-white font-bold text-4xl text-center my-8">{id === undefined ? "Cadastrar Tema" : "Editar Tema"}</h1>
 
-			<form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
+			<form className="text-white w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
 				<div className="flex flex-col gap-2">
 					<label htmlFor="descricao"> Descrição do Tema </label>
 					<input
 						type="text"
 						placeholder="Descreva aqui seu tema"
 						name="descricao"
-						className="border-2 border-slate-700 rounded p-2"
+						className="border-2 border-(--tertiary-dark) rounded-xl p-2 text-white invalid:border-(--secondary) invalid:text-(--secondary) focus:border-(--primary-ex-light) focus:outline focus:outline-(--primary-ex-light) transition-all ease-in"
 						value={tema.descricao}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 					/>
 				</div>
-				<button className="rounded text-slate-100 bg-indigo-400 hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center" type="submit">
-					{isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span> {id === undefined ? "Cadastrar" : "Atualizar"} </span>}
+				<button
+					className="rounded-xl text-white bg-(--tertiary) hover:bg-(--tertiary-dark) hover: w-1/2 py-2 flex justify-center transition-all ease-in font-bold mx-auto"
+					type="submit">
+					{isLoading ? (
+						<img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" width={35}></img>
+					) : (
+						<span> {id === undefined ? "Cadastrar" : "Atualizar"} </span>
+					)}
 				</button>
 			</form>
 		</div>

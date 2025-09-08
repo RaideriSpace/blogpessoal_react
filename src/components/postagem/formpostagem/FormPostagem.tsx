@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Postagem from "../../../models/Postagem";
 import type Tema from "../../../models/Tema";
@@ -81,7 +80,7 @@ function FormPostagem() {
 		});
 	}, [tema]);
 
-	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+	function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setPostagem({
 			...postagem,
 			[e.target.name]: e.target.value,
@@ -139,11 +138,11 @@ function FormPostagem() {
 	const carregandoTema = tema.descricao === "";
 
 	return (
-		<div className="container flex flex-col mx-auto items-center">
+		<div className="container flex flex-col items-center">
 			<h1 className="text-4xl text-center my-8">{id !== undefined ? "Editar Postagem" : "Cadastrar Postagem"}</h1>
 
-			<form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
-				<div className="flex flex-col gap-2">
+			<form className="flex flex-col w-4/5 gap-4" onSubmit={gerarNovaPostagem}>
+				<div className="flex flex-col gap-1">
 					<label htmlFor="titulo">Título da Postagem</label>
 					<input
 						type="text"
@@ -155,19 +154,18 @@ function FormPostagem() {
 						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 					/>
 				</div>
-				<div className="flex flex-col gap-2">
-					<label htmlFor="titulo">Texto da Postagem</label>
-					<input
-						type="text"
-						placeholder="Texto"
+				<div className="flex flex-col gap-1">
+					<label htmlFor="texto">Texto da Postagem</label>
+					<textarea
+						placeholder="Texto da postagem"
 						name="texto"
 						required
-						className="border-2 border-slate-700 rounded p-2"
+						className="h-[150px] border-2 border-slate-700 rounded p-2"
 						value={postagem.texto}
-						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+						onChange={(e: ChangeEvent<HTMLTextAreaElement>) => atualizarEstado(e)}
 					/>
 				</div>
-				<div className="flex flex-col gap-2">
+				<div className="flex flex-col gap-1">
 					<p>Tema da Postagem</p>
 					<select name="tema" id="tema" className="border p-2 border-slate-800 rounded" onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
 						<option value="" selected disabled>
@@ -183,10 +181,13 @@ function FormPostagem() {
 				</div>
 				<button
 					type="submit"
-					className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800
-                               text-white font-bold w-1/2 mx-auto py-2 flex justify-center"
+					className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2 flex justify-center"
 					disabled={carregandoTema}>
-					{isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>}
+					{isLoading ? (
+						<img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" width={35}></img>
+					) : (
+						<span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+					)}
 				</button>
 			</form>
 		</div>

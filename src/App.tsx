@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-
 import Login from "./pages/login/Login";
 import Cadastro from "./pages/cadastro/Cadastro";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -19,7 +17,7 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
 	return (
-		<>
+		<div className="bg-(--primary-dark)">
 			<AuthProvider>
         <ToastContainer />
 				<BrowserRouter>
@@ -43,7 +41,7 @@ function App() {
 					<Footer />
 				</BrowserRouter>
 			</AuthProvider>
-		</>
+		</div>
 	);
 }
 

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Postagem from "../../../models/Postagem";
 import { buscar, deletar } from "../../../services/Service";
-import { ClipLoader } from "react-spinners";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarPostagem() {
@@ -73,25 +72,26 @@ function DeletarPostagem() {
 
 	return (
 		<div className="container w-1/3 mx-auto">
-			<h1 className="text-4xl text-center my-4">Deletar Postagem</h1>
+			<h1 className="text-white text-4xl text-center my-4 font-bold">Deletar Postagem</h1>
 
-			<p className="text-center font-semibold mb-4">Você tem certeza de que deseja apagar a postagem a seguir?</p>
+			<p className="text-white text-center font-semibold mb-4">Você tem certeza de que deseja apagar a postagem a seguir?</p>
 
-			<div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-				<header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">Postagem</header>
+			<div className="border-none flex flex-col rounded-xl overflow-hidden justify-between bg-(--auxiliary2-ex-light)">
+				<header className="py-2 px-6 bg-(--tertiary-light) font-bold text-2xl">Postagem</header>
 				<div className="p-4">
 					<p className="text-xl h-full">{postagem.titulo}</p>
 					<p>{postagem.texto}</p>
 				</div>
 				<div className="flex">
-					<button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={retornar}>
+					<button
+						className="w-full text-white bg-(--tertiary) font-bold hover:bg-(--tertiary-dark) flex items-center justify-center py-2 transition-all ease-in"
+						onClick={retornar}>
 						Não
 					</button>
 					<button
-						className="w-full text-slate-100 bg-indigo-400 
-                        hover:bg-indigo-600 flex items-center justify-center"
+						className="text-white bg-(--secondary) font-bold hover:bg-(--secondary-dark) w-full flex items-center justify-center transition-all ease-in"
 						onClick={deletarPostagem}>
-						{isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span>Sim</span>}
+						{isLoading ? <img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" width={35}></img> : <span>Sim</span>}
 					</button>
 				</div>
 			</div>

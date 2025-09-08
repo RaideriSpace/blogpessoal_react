@@ -20,9 +20,7 @@ function Navbar() {
 
 	return (
 		<>
-			<div
-				className="w-full flex justify-center py-4
-            			   bg-indigo-900 text-white">
+			<div className="w-full flex justify-center py-4 bg-(--primary-ex-dark) text-white">
 				<div className="container flex justify-between text-lg mx-8">
 					<Link to={"/home"} className="text-2xl font-bold">
 						Blog Pessoal{" "}
@@ -33,39 +31,35 @@ function Navbar() {
 							<div className="flex gap-3">
 								{isLoginPage ? (
 									<>
-										<span className="font-bold"> Logar </span>
-										<Link to={"/cadastro"} className="hover:font-medium">
+										<span className="font-bold text-(--tertiary-ex-light)"> Logar </span>
+										<Link to={"/cadastro"} className="hover:text-(--tertiary-light) transition-all ease-in">
 											<span> Cadastrar </span>
 										</Link>
 									</>
 								) : (
 									<>
-										<Link to={"/"} className="hover:font-medium">
+										<Link to={"/"} className="hover:text-(--tertiary-light) transition-all ease-in">
 											<span> Logar </span>
 										</Link>
-										<span className="font-bold"> Cadastrar </span>
+										<span className="font-bold text-(--tertiary-ex-light)"> Cadastrar </span>
 									</>
 								)}
 							</div>
 						) : (
 							<div className="flex gap-3">
-								<Link to="/postagens" className="hover:font-medium">
+								<Link to="/postagens" className="hover:text-(--tertiary-light) transition-all ease-in">
 									Postagens
 								</Link>
-								&nbsp;
-								<Link to={"/temas"} className="hover:font-medium">
+								<Link to={"/temas"} className="hover:text-(--tertiary-light) transition-all ease-in">
 									Temas
 								</Link>
-								&nbsp;
-								<Link to={"/cadastrartema"} className="hover:font-medium">
+								<Link to={"/cadastrartema"} className="hover:text-(--tertiary-light) transition-all ease-in">
 									Cadastrar tema
 								</Link>
-								&nbsp;
-								<Link to="/perfil" className="hover:font-medium">
+								<Link to="/perfil" className="hover:text-(--tertiary-light) transition-all ease-in">
 									Perfil
 								</Link>
-								&nbsp;
-								<Link to={"/"} onClick={logout} className="hover:font-medium">
+								<Link to={"/"} onClick={logout} className="hover:text-(--tertiary-light) transition-all ease-in">
 									Sair
 								</Link>
 							</div>

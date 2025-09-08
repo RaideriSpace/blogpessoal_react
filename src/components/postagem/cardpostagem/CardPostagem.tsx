@@ -7,15 +7,13 @@ interface CardPostagensProps {
 
 function CardPostagem({ postagem }: CardPostagensProps) {
 	return (
-		<div
-			className="border-slate-900 border 
-            flex flex-col rounded overflow-hidden justify-between">
+		<div className="border-none flex flex-col rounded-xl overflow-hidden justify-between bg-(--auxiliary2-ex-light)">
 			<div>
-				<div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
+				<div className="flex w-full bg-(--tertiary-light) py-2 px-4 items-center gap-4">
 					<img src={postagem.usuario?.foto} className="h-12 rounded-full" alt={postagem.usuario?.nome} />
 					<h3 className="text-lg font-bold text-center uppercase">{postagem.usuario?.nome}</h3>
 				</div>
-				<div className="p-4 ">
+				<div className="p-4">
 					<h4 className="text-lg font-semibold uppercase">{postagem.titulo}</h4>
 					<p>{postagem.texto}</p>
 					<p>Tema: {postagem.tema?.descricao}</p>
@@ -31,14 +29,12 @@ function CardPostagem({ postagem }: CardPostagensProps) {
 			<div className="flex">
 				<Link
 					to={`/editarpostagem/${postagem.id}`}
-					className="w-full text-white bg-indigo-400 
-                    hover:bg-indigo-800 flex items-center justify-center py-2">
+					className="w-full text-white bg-(--tertiary) font-bold hover:bg-(--tertiary-dark) flex items-center justify-center py-2 transition-all ease-in">
 					<button>Editar</button>
 				</Link>
 				<Link
 					to={`/deletarpostagem/${postagem.id}`}
-					className="text-white bg-red-400 
-                    hover:bg-red-700 w-full flex items-center justify-center">
+					className="text-white bg-(--secondary) font-bold hover:bg-(--secondary-dark) w-full flex items-center justify-center transition-all ease-in">
 					<button>Deletar</button>
 				</Link>
 			</div>

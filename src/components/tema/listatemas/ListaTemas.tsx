@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { SyncLoader } from "react-spinners";
 import CardTema from "../cardtema/CardTema";
 import { useContext, useEffect, useState } from "react";
 import type Tema from "../../../models/Tema";
@@ -48,7 +47,8 @@ function ListaTemas() {
 		<>
 			{isLoading && (
 				<div className="flex justify-center w-full my-8">
-					<SyncLoader color="#312e81" size={12} />
+					<img src="https://cdn.pixabay.com/animation/2022/07/29/03/42/03-42-11-849_512.gif" width={70}>
+					</img>
 				</div>
 			)}
 
