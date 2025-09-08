@@ -8,7 +8,7 @@ import { ToastAlerta } from "../../utils/ToastAlerta";
 function Home() {
 	const navigate = useNavigate();
 
-	const { usuario, handleLogout } = useContext(AuthContext);
+	const { usuario } = useContext(AuthContext);
 	const token = usuario.token;
 
 	useEffect(() => {
