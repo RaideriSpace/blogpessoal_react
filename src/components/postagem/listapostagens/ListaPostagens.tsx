@@ -56,8 +56,7 @@ function ListaPostagens() {
 					{!isLoading && postagens.length === 0 && <span className="text-3xl text-center my-8">Nenhuma Postagem foi encontrada!</span>}
 
 					<div
-						className="grid grid-cols-1 md:grid-cols-2 
-                                    lg:grid-cols-3 gap-8">
+						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{postagens.map((postagem) => (
 							<CardPostagem key={postagem.id} postagem={postagem} />
 						))}

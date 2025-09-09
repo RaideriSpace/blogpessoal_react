@@ -72,7 +72,7 @@ function Login() {
 						</Link>
 					</p>
 				</form>
-				<div className="bg-[url(../src/assets/card.png)] bg-cover lg:block w-[100%] h-[100%]"></div>
+				<div className="bg-[url(../assets/bg.png)] bg-cover lg:block w-[100%] h-[100%]"></div>
 			</div>
 		</>
 	);

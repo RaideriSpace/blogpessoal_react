@@ -138,36 +138,40 @@ function FormPostagem() {
 	const carregandoTema = tema.descricao === "";
 
 	return (
-		<div className="container flex flex-col items-center">
-			<h1 className="text-4xl text-center my-8">{id !== undefined ? "Editar Postagem" : "Cadastrar Postagem"}</h1>
+		<div className="container flex flex-col items-center bg-(--primary-dark)">
+			<h1 className="text-4xl text-center my-8 text-white font-bold">{id !== undefined ? "Editar Postagem" : "Cadastrar Postagem"}</h1>
 
 			<form className="flex flex-col w-4/5 gap-4" onSubmit={gerarNovaPostagem}>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-1 text-white font-bold">
 					<label htmlFor="titulo">Título da Postagem</label>
 					<input
 						type="text"
 						placeholder="Titulo"
 						name="titulo"
 						required
-						className="border-2 border-slate-700 rounded p-2"
+						className="border-2 border-(--tertiary-dark) rounded-xl p-2 text-white invalid:border-(--secondary) invalid:text-(--secondary) focus:border-(--primary-ex-light) focus:outline focus:outline-(--primary-ex-light) transition-all ease-in"
 						value={postagem.titulo}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 					/>
 				</div>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-1 text-white font-bold">
 					<label htmlFor="texto">Texto da Postagem</label>
 					<textarea
 						placeholder="Texto da postagem"
 						name="texto"
 						required
-						className="h-[150px] border-2 border-slate-700 rounded p-2"
+						className="border-2 border-(--tertiary-dark) rounded-xl p-2 text-white invalid:border-(--secondary) invalid:text-(--secondary) focus:border-(--primary-ex-light) focus:outline focus:outline-(--primary-ex-light) transition-all ease-in"
 						value={postagem.texto}
 						onChange={(e: ChangeEvent<HTMLTextAreaElement>) => atualizarEstado(e)}
 					/>
 				</div>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-1 text-white font-bold">
 					<p>Tema da Postagem</p>
-					<select name="tema" id="tema" className="border p-2 border-slate-800 rounded" onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
+					<select
+						name="tema"
+						id="tema"
+						className="border-2 border-(--tertiary-dark) rounded-xl p-2 text-white invalid:border-(--secondary) invalid:text-(--secondary) focus:border-(--primary-ex-light) focus:outline focus:outline-(--primary-ex-light) transition-all ease-in bg-(--primary-dark)"
+						onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
 						<option value="" selected disabled>
 							Selecione um Tema
 						</option>
@@ -181,7 +185,7 @@ function FormPostagem() {
 				</div>
 				<button
 					type="submit"
-					className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2 flex justify-center"
+					className="rounded-xl text-white bg-(--tertiary) hover:bg-(--tertiary-dark) hover: w-1/2 py-2 flex justify-center transition-all ease-in font-bold mx-auto disabled:bg-(--auxiliary2-ex-dark) disabled:text-(--auxiliary2)"
 					disabled={carregandoTema}>
 					{isLoading ? (
 						<img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" width={35}></img>

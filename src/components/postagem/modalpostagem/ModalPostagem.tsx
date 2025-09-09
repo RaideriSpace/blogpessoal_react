@@ -36,12 +36,12 @@ function ModalPostagem() {
 						</span>
 					</button>
 				}
+				className="bg-(--primary-dark)"
 				modal
 				contentStyle={{
 					borderRadius: "1rem",
 					paddingBottom: "2rem",
-				}}
-        >
+				}}>
 				<FormPostagem />
 			</Popup>
 		</>
